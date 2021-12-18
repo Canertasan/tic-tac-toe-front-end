@@ -1,0 +1,13 @@
+{{#if isModalDialogVisible}}
+  {{#modal-dialog targetAttachment="center"
+                  translucentOverlay=true
+                  onClose=(action "closeModalDialog")}}
+    <p class="ember-modal-dialog-start-text"> Welcome to our tic-tac-toe game. First of all if you playing this game for the first time, you should add some user at Add User section on bottom left menu. If you have already users created before, you can go to playground directly and find user name from there. After selecting two users you can start your game. Have fun!</p>
+
+    <button class="ember-modal-dialog-start-button" onclick={{action closeModalDialog}}>
+      Let's Get Started
+    </button>
+
+  {{/modal-dialog}}
+{{/if}}
+{{!-- <UserInput /> --}}

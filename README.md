@@ -16,7 +16,7 @@ You will need the following things properly installed on your computer.
 
 * `git clone <repository-url>` this repository
 * `cd front-end`
-* `npm install`
+* `yarn`
 
 ## Running / Development
 
@@ -35,8 +35,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Linting
 
-* `npm run lint`
-* `npm run lint:fix`
+* `npm run prettier`
 
 ### Building
 
@@ -46,6 +45,20 @@ Make use of the many generators for code, try `ember help generate` for more det
 ### Deploying
 
 Specify what it takes to deploy your app.
+
+### Versions
+
+* ember-cli@3.28
+* node v14.17.6
+
+### Additional packages
+
+* ember-concurrency
+* ember-composable-helpers
+* ember-cli-tailwind
+* ember-ajax
+* ember-component-css
+* ember-modal-dialog
 
 ## Further Reading / Useful Links
 
