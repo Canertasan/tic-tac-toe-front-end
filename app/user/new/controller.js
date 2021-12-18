@@ -21,7 +21,7 @@ export default class UserNewController extends Controller {
       currArr.addObject(user);
       this.created_users = currArr;
     } catch (e) {
-      this.set('errorList', e.errors);
+      this.errorList = e.errors;
     }
   }
 
