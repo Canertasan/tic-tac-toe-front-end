@@ -4,6 +4,8 @@ import { action } from '@ember/object';
 // import { inject as service } from '@ember/service';
 
 export default class PlaygroundIndexController extends Controller {
+  // @service router;
+
   @tracked isModalDialogVisible = true;
   // @action
   // updateOrganizationName(e) {

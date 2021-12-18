@@ -9,6 +9,10 @@
   text-align: center;
 }
 
+/*body {
+  background-image: url('header.png');
+}*/
+
 .ember-modal-dialog-start-text {
   margin-top: 5%;
   margin-bottom: 5%;
