@@ -78,3 +78,7 @@
     100% { background-position: 0 0; }
 }
 
+.errors {
+  background-color: red;
+}
+

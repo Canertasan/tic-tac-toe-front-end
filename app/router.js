@@ -8,7 +8,7 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('playground', { path: '/', resetNamespace: true }, function () {
-    this.route('index', { path: '/' });
+    this.route('index', { path: '' });
   });
   this.route('user', { path: '/user', resetNamespace: true }, function () {
     this.route('new', { path: '/new' });

@@ -1,34 +1,50 @@
 {{!-- ref https://www.tailwindtoolbox.com/templates/rainblur-landing-page --}}
-<div class="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center text-center">
+<div class="container pt-24 md:pt-36 mx-auto items-center text-center">
+  <div class="errors">
+    {{#each this.errorList as |error|}}
+      <div class="flex items-center justify-center">
+        <FaIcon class="mr-3" @icon="skull" />
+        <p class="text-center items-center">{{error.detail}}</p>
+      </div> 
+    {{/each}}
+  </div>
   <label class="block text-black py-2 font-bold mb-2" >
-    Your added users
+    Your added users (you can add 2 player only)
   </label>
-  {{#each this.created_users as |user|}}
-    <div style="display:flex;padding:10px:">
-       <p style="margin:10px;">{{user.name}}</p>
-    </div>
-  {{/each}}
-  <form class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
-    <div class="mb-4">
-      <label class="block text-black py-2 font-bold mb-2" >
-        Enter User Name
-      </label>
-      <input
-        class="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
-        type="text"
-        placeholder="User Name"
-        {{on "change" this.updateUserName}}
-      />
-    </div>
+  <div class="flex items-center justify-center">
+    {{#each this.created_users as |user|}}
+      <p style="margin:10px;">{{user.name}}</p>
+      <button onclick={{action this.removeCreatedUser user}}><FaIcon @icon="trash" /></button>
+    {{/each}}
+  </div>  
+  <div class="flex flex-wrap flex-col md:flex-row">
+    <form class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label class="block text-black py-2 font-bold mb-2" >
+          Enter User Name
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+          type="text"
+          placeholder="User Name"
+          {{on "change" this.updateUserName}}
+        />
+      </div>
 
-    <div class="flex items-center justify-between pt-4">
-      <button
-        class="bg-gradient-to-r text-black font-bold py-2 px-4 rounded mx-auto border-dotted border-2 border-black"
-        type="button"
-        onclick={{action createUser}}
-      >
-        Create User
-      </button>
-    </div>
-  </form>
+      <div class="flex items-center justify-between pt-4">
+        <button
+          class="bg-gradient-to-r text-black font-bold py-2 px-4 rounded mx-auto border-dotted border-2 border-black {{if (eq this.created_users.length 2) "cursor-not-allowed" ""}}"
+          type="button"
+          onclick={{action createUser}}
+          disabled={{eq this.created_users.length 2}}
+        >
+          Create User
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <button class="ember-modal-dialog-start-button" onclick={{action this.transitionToPlayground}}>
+    Let's Play
+  </button>
 </div>
