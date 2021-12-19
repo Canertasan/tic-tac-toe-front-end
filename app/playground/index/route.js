@@ -5,12 +5,17 @@ import { tracked } from '@glimmer/tracking';
 export default class PlaygroundIndexRoute extends Route {
   @service store;
 
-  @tracked users = [];
+  @tracked _users = [];
 
 
   async model() {
-    this.users = this.store.peekAll('user');
+    // let user = await this.store.findAll('user'); for test
+    this._users = this.store.peekAll('user');
     // now we can create user and get user to the playground
   }
 
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    controller.set('users', this._users.toArray());
+  }
 }

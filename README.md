@@ -61,6 +61,7 @@ Specify what it takes to deploy your app.
 * ember-modal-dialog
 * ember-cli-flash (doesnt work on ember 3.28 :( )
 * @fortawesome/ember-fontawesome
+* ember-inflector
 
 ## Further Reading / Useful Links
 

@@ -12,7 +12,7 @@
     Your added users (you can add 2 player only)
   </label>
   <div class="flex items-center justify-center">
-    {{#each this.created_users as |user|}}
+    {{#each this.createdUsers as |user|}}
       <p style="margin:10px;">{{user.name}}</p>
       <button onclick={{action this.removeCreatedUser user}}><FaIcon @icon="trash" /></button>
     {{/each}}
@@ -33,10 +33,10 @@
 
       <div class="flex items-center justify-between pt-4">
         <button
-          class="bg-gradient-to-r text-black font-bold py-2 px-4 rounded mx-auto border-dotted border-2 border-black {{if (eq this.created_users.length 2) "cursor-not-allowed" ""}}"
+          class="bg-gradient-to-r text-black font-bold py-2 px-4 rounded mx-auto border-dotted border-2 border-black {{if (eq this.createdUsers.length 2) "cursor-not-allowed" ""}}"
           type="button"
           onclick={{action createUser}}
-          disabled={{eq this.created_users.length 2}}
+          disabled={{eq this.createdUsers.length 2}}
         >
           Create User
         </button>

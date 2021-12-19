@@ -11,7 +11,7 @@ export default class UserNewController extends Controller {
 
   @tracked currentUserName = null;
   @tracked errorList = [];
-  @tracked created_users = [];
+  @tracked createdUsers = [];
 
   @action
   async createUser() {
@@ -21,11 +21,11 @@ export default class UserNewController extends Controller {
     });
     try {
       await user.save();
-      let currArr = this.created_users;
+      let currArr = this.createdUsers;
       currArr.addObject(user);
       this.created_users = currArr;
     } catch (e) {
-      user.deleteRecord();
+      this.store.unloadRecord(user);
       this.errorList = e.errors;
     }
   }
@@ -36,10 +36,11 @@ export default class UserNewController extends Controller {
   }
 
   @action
-  removeCreatedUser(user) {
-    let currArr = this.created_users;
+  async removeCreatedUser(user) {
+    let currArr = this.createdUsers;
     currArr.removeObject(user);
-    this.created_users = currArr;
+    this.createdUsers = currArr;
+    this.store.unloadRecord(user);
   }
 
   @action

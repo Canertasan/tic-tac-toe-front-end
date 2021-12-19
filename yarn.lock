@@ -5007,7 +5007,7 @@ ember-ignore-children-helper@^1.0.1:
   dependencies:
     ember-cli-babel "^6.8.2"
 
-ember-inflector@^4.0.1:
+ember-inflector@^4.0.1, ember-inflector@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/ember-inflector/-/ember-inflector-4.0.2.tgz#4494f1a5f61c1aca7702d59d54024cc92211d8ec"
   dependencies:
