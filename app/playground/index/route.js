@@ -14,10 +14,7 @@ export default class PlaygroundIndexRoute extends Route {
   }
 
   async model() {
-    let user1 = await this.store.findRecord('user',154);
-    let user2 = await this.store.findRecord('user',155);
-    this._users = [user1,user2];
-    // this._users = this.store.peekAll('user');
+    this._users = this.store.peekAll('user');
   }
 
   setupController(controller, model) {
