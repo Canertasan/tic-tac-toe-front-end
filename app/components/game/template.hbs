@@ -2,8 +2,9 @@
   <div class="flex-shrink flex bg-black min-h-16">
     <div class="flex-1 flex justify-around p-4 text-white {{if game.isComplete 'bg-green' 'bg-black'}}">
       <button 
-        class="flex-shrink w-1/4 items-center bg-pink hover:bg-pink-light text-white border-pink-lighter font-bold py-2 px-4 rounded"
+        class="flex-shrink w-1/4 items-center bg-pink hover:bg-pink-light text-white border-pink-lighter font-bold py-2 px-4 rounded {{if (not this.roundEnded) "cursor-not-allowed" ""}}"
         onclick={{action 'restartGame'}}
+        disabled={{(not this.roundEnded)}}
       >🎲 New Game</button>
       <div class="flex-shrink w-1/4 items-center bg-pink text-white border-pink-lighter font-bold py-2 px-4 rounded text-center">
         <p class="mb-4">{{t 'game.lastWinner'}}</p>
@@ -29,9 +30,8 @@
         <tr style="height:16.6%;">
           {{#each row.cells as |column|}}
             <td 
-              class="border border-grey-darkest w-3/10 text-center {{if column.value "cursor-not-allowed" ""}}"
-              onclick={{action 'updatePlayground' row.x column.y column.value}}
-              {{!-- onmousemove={{action 'mouseMove' cell}} --}}
+              class="border border-grey-darkest w-3/10 text-center {{if (or column.value this.roundEnded) "cursor-not-allowed" ""}}"
+              onclick={{action 'updatePlayground' row.x column.y}}
             >
               {{column.value}}
             </td>
