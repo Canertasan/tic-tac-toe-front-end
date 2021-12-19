@@ -9,10 +9,12 @@
     {{/each}}
   </div>
   <label class="block text-black py-2 font-bold mb-2" >
-    Your added users (you can add 2 player only)
+    {{t 'userNew.userInfo'}}  
   </label>
-  <UserList @createdUsers={{this.createdUsers}}
-            @removeUser={{this.removeCreatedUser}}/>
+  <div class="flex items-center justify-center">
+    <UserList @createdUsers={{this.createdUsers}}
+              @removeUser={{this.removeCreatedUser}}/>
+  </div>
   <UserCreateForm @createdUsers={{this.createdUsers}}
                   @createUser={{this.createUser}}
                   @updateUserName={{this.updateUserName}}/>

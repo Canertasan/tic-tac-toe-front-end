@@ -1,0 +1,43 @@
+<div class="pin fixed flex-col">
+  <div class="flex-shrink flex bg-black min-h-16">
+    <div class="flex-1 flex justify-around p-4 text-white {{if game.isComplete 'bg-green' 'bg-black'}}">
+      <button 
+        class="flex-shrink w-1/4 items-center bg-pink hover:bg-pink-light text-white border-pink-lighter font-bold py-2 px-4 rounded"
+        onclick={{action 'restartGame'}}
+      >🎲 New Game</button>
+      <div class="flex-shrink w-1/4 items-center bg-pink text-white border-pink-lighter font-bold py-2 px-4 rounded text-center">
+        <p class="mb-4">{{t 'game.lastWinner'}}</p>
+        <p>{{this.lastRoundWinner}}</p>
+      </div>
+    </div>
+    <div class="flex-1 flex p-4 text-white bg-blue">
+      <p>X will be start for the game</p>
+      {{#each this.usersWithTurn as |user index|}}
+        <div class="flex-shrink w-full bg-pink text-white border-pink-lighter font-bold py-2 px-4 rounded mx-5 text-center">
+          <p style="margin-right:10px;">{{t 'game.nameText'}}: {{user.name}}</p>
+          <p style="margin-right:10px;">{{t 'game.turnText'}}:  {{user.turn}}</p>
+          <p style="margin-right:10px;">{{t 'game.currWinning'}}:  {{get this.currentWinningCounts index}}</p>
+        </div>
+      {{/each}}
+      <button onclick={{action this.swapUsers}}> ↪️ </button>
+    </div>
+  </div>
+  <p class="text-center">{{t 'game.yourTurn'}}: {{getname this.usersWithTurn this.currentUserTurn}}</p>
+  <div class="flex-1 pt-10 flex justify-center bg-grey-lighter" style="height:50%;">
+    <table class="w-1/3 table-fixed">
+      {{#each this.playgrounds as |row|}}
+        <tr style="height:16.6%;">
+          {{#each row.cells as |column|}}
+            <td 
+              class="border border-grey-darkest w-3/10 text-center {{if column.value "cursor-not-allowed" ""}}"
+              onclick={{action 'updatePlayground' row.x column.y column.value}}
+              {{!-- onmousemove={{action 'mouseMove' cell}} --}}
+            >
+              {{column.value}}
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </table>
+  </div>  
+</div>

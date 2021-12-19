@@ -14,7 +14,10 @@ export default class PlaygroundIndexRoute extends Route {
   }
 
   async model() {
-    this._users = this.store.peekAll('user');
+    let user1 = await this.store.findRecord('user',154);
+    let user2 = await this.store.findRecord('user',155);
+    this._users = [user1,user2];
+    // this._users = this.store.peekAll('user');
   }
 
   setupController(controller, model) {
@@ -24,7 +27,9 @@ export default class PlaygroundIndexRoute extends Route {
 
   @action
   willTransition() {
-    this.controllerFor('playground.index').userFindError = "";
-    this.controllerFor('playground.index').currentUserName = "";
+    let controller = this.controllerFor('playground.index')
+    controller.userFindError = "";
+    controller.currentUserName = "";
+    controller.isGameStarted = false;
   }
 }

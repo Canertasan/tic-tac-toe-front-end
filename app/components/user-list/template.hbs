@@ -1,6 +1,4 @@
-<div class="flex items-center justify-center">
-  {{#each this.createdUsers as |user|}}
-    <p style="margin:10px;">{{user.name}}</p>
-    <button onclick={{action this.removeUser user}}><FaIcon @icon="trash" /></button>
-  {{/each}}
-</div>  
+{{#each this.createdUsers as |user|}}
+  <p style="margin:10px;">{{user.name}}</p>
+  <button onclick={{action this.removeUser user}}><FaIcon @icon="trash" /></button>
+{{/each}}

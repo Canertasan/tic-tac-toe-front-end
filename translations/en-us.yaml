@@ -1,6 +1,12 @@
 price_banner: The {product} costs {price, number, ::currency/USD}
 sameUser: 'You cannot add same user again'
 
+userNew:
+  userInfo: 'Your added users (you can add 2 player only)'
+
+playgroundIndex:
+  findUserInfo: ' If you created users before you can simply find in here'
+  addUserInfo: 'Or simply goes to add user page to add some :)'
 
 userCreateForm:
   formInfo: 'Enter User Name'
@@ -8,3 +14,11 @@ userCreateForm:
 
 modalDialog:
   infoText: 'Welcome to our tic-tac-toe game. First of all if you playing this game for the first time, you should add some user at Add User section on bottom left menu. If you have already users created before, you can go to playground directly and find user name from there. After selecting two users you can start your game. Have fun!'
+
+game:
+  nameText: 'Name'
+  turnText: 'Turn'
+  currWinning: 'Winning Count'
+  lastWinner: 'Last Winner'
+  yourTurn: 'Your Turn'
+
