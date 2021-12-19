@@ -11,40 +11,10 @@
   <label class="block text-black py-2 font-bold mb-2" >
     Your added users (you can add 2 player only)
   </label>
-  <div class="flex items-center justify-center">
-    {{#each this.createdUsers as |user|}}
-      <p style="margin:10px;">{{user.name}}</p>
-      <button onclick={{action this.removeCreatedUser user}}><FaIcon @icon="trash" /></button>
-    {{/each}}
-  </div>  
-  <div class="flex flex-wrap flex-col md:flex-row">
-    <form class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
-      <div class="mb-4">
-        <label class="block text-black py-2 font-bold mb-2" >
-          Enter User Name
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
-          type="text"
-          placeholder="User Name"
-          {{on "change" this.updateUserName}}
-        />
-      </div>
-
-      <div class="flex items-center justify-between pt-4">
-        <button
-          class="bg-gradient-to-r text-black font-bold py-2 px-4 rounded mx-auto border-dotted border-2 border-black {{if (eq this.createdUsers.length 2) "cursor-not-allowed" ""}}"
-          type="button"
-          onclick={{action createUser}}
-          disabled={{eq this.createdUsers.length 2}}
-        >
-          Create User
-        </button>
-      </div>
-    </form>
-  </div>
-
-  <button class="ember-modal-dialog-start-button" onclick={{action this.transitionToPlayground}}>
-    Let's Play
-  </button>
+  <UserList @createdUsers={{this.createdUsers}}
+            @removeUser={{this.removeCreatedUser}}/>
+  <UserCreateForm @createdUsers={{this.createdUsers}}
+                  @createUser={{this.createUser}}
+                  @updateUserName={{this.updateUserName}}/>
+  <CoolButton @onClick={{action transitionToPlayground}} @buttonName="Let's Play"/>
 </div>

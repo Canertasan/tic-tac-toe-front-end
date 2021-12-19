@@ -59,9 +59,12 @@ Specify what it takes to deploy your app.
 * ember-ajax
 * ember-component-css
 * ember-modal-dialog
-* ember-cli-flash (doesnt work on ember 3.28 :( )
+* ember-cli-flash ( doesnt work on ember 3.28 :( )
 * @fortawesome/ember-fontawesome
 * ember-inflector
+* ember-cookies
+* ember-intl
+* ember-arg-types
 
 ## Further Reading / Useful Links
 

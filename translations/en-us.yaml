@@ -1,0 +1,10 @@
+price_banner: The {product} costs {price, number, ::currency/USD}
+sameUser: 'You cannot add same user again'
+
+
+userCreateForm:
+  formInfo: 'Enter User Name'
+  buttonText: 'Create User'
+
+modalDialog:
+  infoText: 'Welcome to our tic-tac-toe game. First of all if you playing this game for the first time, you should add some user at Add User section on bottom left menu. If you have already users created before, you can go to playground directly and find user name from there. After selecting two users you can start your game. Have fun!'

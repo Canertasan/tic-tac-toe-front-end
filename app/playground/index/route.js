@@ -5,14 +5,16 @@ import { action } from '@ember/object';
 
 export default class PlaygroundIndexRoute extends Route {
   @service store;
+  @service intl;
 
   @tracked _users = [];
 
+  beforeModel() {
+    this.intl.setLocale(['en-us']);
+  }
 
   async model() {
-    // let user = await this.store.findAll('user'); for test
     this._users = this.store.peekAll('user');
-    // now we can create user and get user to the playground
   }
 
   setupController(controller, model) {

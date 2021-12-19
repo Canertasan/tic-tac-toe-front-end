@@ -1,24 +1,19 @@
-{{#if isModalDialogVisible}}
+{{#if (and isModalDialogVisible cookieNotExist)}}
   {{#modal-dialog targetAttachment="center"
                   translucentOverlay=true
                   onClose=(action "closeModalDialog")}}
-    <p class="ember-modal-dialog-start-text"> Welcome to our tic-tac-toe game. First of all if you playing this game for the first time, you should add some user at Add User section on bottom left menu. If you have already users created before, you can go to playground directly and find user name from there. After selecting two users you can start your game. Have fun!</p>
+    <p class="ember-modal-dialog-start-text"> {{t 'modalDialog.infoText'}}</p>
 
-    <button class="ember-modal-dialog-start-button" onclick={{action closeModalDialog}}>
-      Let's Get Started
-    </button>
+    <CoolButton @onClick={{action closeModalDialog}} @buttonName="Let's Get Started"/>
 
   {{/modal-dialog}}
 {{else}}
-  <div class="flex justify-center my-10">
-    {{#each this.users as |user| }}
-      {{user.name}}
-    {{/each}}
-  </div>
+  <UserList @createdUsers={{this.users}}
+            @removeUser={{this.removeSelectedUser}}/>
   {{#if (eq this.users.length 2)}}
     <p>here</p>
   {{else}}
-    <div class="flex justify-center my-10">
+    <div class="flex justify-center flex-wrap my-5">
       <p class="mr-10"> If you created users before you can simply find in here </p>
       {{input class="shadow appearance-none border rounded text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out mr-10"
         type="text"
@@ -27,8 +22,9 @@
       {{#if this.userFindError}}
         {{this.userFindError}}
       {{/if}}
-    </div>
-    <div class="flex justify-center">
+
+      <div class="w-full my-3"></div>
+
       <p class="mr-20"> Or simply goes to add user page to add some :) </p>
       {{link-to 'Add User' 'user.new' classNames='text-black'}}
     </div>
